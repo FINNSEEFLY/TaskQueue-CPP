@@ -1,5 +1,4 @@
 #include <iostream>
-#include "locale"
 #include <vector>
 #include <fstream>
 #include <algorithm>

@@ -10,19 +10,29 @@
 
 class TaskQueue {
 private:
-    std::queue<std::function<void()>>* taskQueue;
+    std::queue<std::function<void()>> *taskQueue;
     HANDLE mutex;
+
     std::function<void()> Pop();
+
     int numOfThreads;
+
     bool IsEmpty();
+
 public:
     explicit TaskQueue(int numOfThreads = DEFAULT_NUM_OF_THREADS);
+
     ~TaskQueue();
-    void Push(std::function<void()>  task);
+
+    void Push(std::function<void()> task);
+
     void Start();
+
     static DWORD WINAPI Process(LPVOID param);
+
     void WaitAll();
-    HANDLE* threads;
+
+    HANDLE *threads;
     CRITICAL_SECTION criticalSection;
 
     [[nodiscard]] int getNumOfThreads() const;
